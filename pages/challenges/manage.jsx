@@ -7,7 +7,7 @@ import Dropdown from "@/components/Dropdown"
 function Manage() {
   const [search, setSearch] = useState("");
   const [filteredChallenges, setFilteredChallenges] = useState(Data);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
   const challengesPerPage = 10;
 
   const totalPages = Math.ceil(Data.length / challengesPerPage);
