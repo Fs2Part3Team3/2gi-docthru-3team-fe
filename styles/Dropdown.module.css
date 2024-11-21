@@ -1,0 +1,20 @@
+.input {
+    border-radius: 12px;
+    font-size: 16px;
+    width: 100%;
+    padding: 11px 20px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.inputfield {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-family: inherit;
+}

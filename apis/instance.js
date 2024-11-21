@@ -22,8 +22,9 @@ instance.interceptors.response.use(res => res, async (error) => {
 	if (user && (response?.status === 401 || response?.status === 403)) {
 		const userJSON = JSON.parse(user);
 		if (!originalRequest._retry) {
-			const res = await instance.post('/account/renew-token', {}, { _retry: true });
+			const res = await instance.post('/auth/refresh-token', { refreshToken: userJSON.refreshToken }, { _retry: true });
 			userJSON.accessToken = res.data.accessToken;
+			userJSON.refreshToken = res.data.refreshToken;
 			localStorage.setItem("user", JSON.stringify(userJSON));
 			originalRequest._retry = true;
 			return instance(originalRequest);

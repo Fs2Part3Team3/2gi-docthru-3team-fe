@@ -165,7 +165,8 @@ export default function Home() {
           }} />
         </div>
       </div>
-      {challenges?.data?.map?.(challenge => <Challenge key={challenge.id} challenge={challenge} />)}
+      {challenges?.data?.map?.(challenge => <Challenge key={challenge.id} challenge={challenge} />)
+      || <div className={styles.noResult}>아직 챌린지가 없어요.<br />지금 바로 챌린지를 신청해보세요!</div>}
       <Pagination page={page} setPage={setPage} pageMaxCandi={Math.ceil(challenges?.totalCount / limit)} />
     </>
   );

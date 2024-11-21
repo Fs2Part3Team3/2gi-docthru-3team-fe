@@ -1,0 +1,20 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .button {
+    border-radius: 12px;
+    font-size: 16px;
+    color: #ffffff;
+    width: 100%;
+    padding: 11px 20px;
+    border: 1px solid #000000;
+    background-color: #000000;
+    margin-bottom: 10px;
+    font-family: inherit;
+  }
+
