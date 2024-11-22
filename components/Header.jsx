@@ -15,6 +15,9 @@ const Header = () => {
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [isUserDDOpen, setIsUserDDOpen] = useState(false);
 
+  console.log(user);
+  const { nickname, grade } = user || {};
+
 	return (
 	<nav className={styles.navbar}>
       <div className={styles.left}>
@@ -41,8 +44,8 @@ const Header = () => {
                 <div className={styles.user}>
                   <Image width={1.5 * viewport.size} height={1.5 * viewport.size} src="/images/ic_profile.png" alt="Profile" />
                   <div className={styles.nicknameAndGrade}>
-                    <span className={styles.nickname}>nickname</span>
-                    <span className={styles.grade}>GRADE[grade]</span>
+                    <span className={styles.nickname}>{nickname}</span>
+                    <span className={styles.grade}>{GRADE[grade]}</span>
                   </div>
                 </div>
                 <Link href="/users/me/challenges/ongoing"><div className={styles.userDropDownItem}>나의 챌린지</div></Link>
