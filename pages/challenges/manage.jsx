@@ -3,6 +3,19 @@ import SearchBar from "@/components/SearchBar";
 import ChallengeTable from "@/components/ChallengeTable";
 import Pagination from "@/components/Pagination";
 import Dropdown from "@/components/Dropdown"
+import axios from "axios";
+
+const getChallenges = async (page, limit, search, status) => {
+  const response = await axios.get("/api/challenges", {
+    params: {
+      page,
+      limit,
+      search,
+      status,
+    },
+  });
+  return response.data;
+};
 
 function Manage() {
   const [search, setSearch] = useState("");
