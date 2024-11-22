@@ -7,6 +7,7 @@ import styles from "@/styles/ChallengeDetail.module.css";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -34,7 +35,7 @@ export function Work({ work, viewport }) {
         <span>{likeCount}</span>
       </div>
       <div className={styles.seeWork}>
-        작업물 보기 &gt;
+        <Link href={`/work/${id}`}>작업물 보기 &gt;</Link>
       </div>
     </div>
   );
@@ -57,12 +58,12 @@ function ChallengeDetail() {
 
   useEffect(() => {
     if (challenge) {
-      setPageMax(Math.ceil(challenge.works.length / PAGE_SIZE) ?? 1);
+      setPageMax(Math.ceil(challenge.works?.list.length / PAGE_SIZE) ?? 1);
 
       let rank = 1;
       let prevWork = null;
       let offset = 1;
-      const rankedWorks = challenge.works.sort((work1, work2) => work2.likeCount - work1.likeCount).map(work => {
+      const rankedWorks = challenge.works?.list.sort((work1, work2) => work2.likeCount - work1.likeCount).map(work => {
         if (prevWork && prevWork.likeCount !== work.likeCount) {
           rank += offset;
           offset = 1;
