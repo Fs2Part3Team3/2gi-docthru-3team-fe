@@ -38,13 +38,13 @@
 
   & .sort {
     position: relative;
-    width: 10.2rem;
-    /* border-radius: 100px; */
+    /* width: 10.2rem; */
+    width: 8.75rem;
     height: 2.5rem;
-
+/* 
     & select {
       position: absolute;
-      border-radius: 2rem;
+      border-radius: 2rem; 
       padding: 0 0.5rem;
       border: 1px solid var(--gray-300);
       inset: 0;
@@ -55,6 +55,14 @@
         width: 8.75rem;
         height: 301px;
       }
+    } */
+  }
+}
+
+@media (max-width: 768px) {
+  .searchAndSort {
+    & .sort {
+      width: 6rem;
     }
   }
 }

@@ -76,11 +76,11 @@ function Challenge({ challenge, status }) {
 				<span>모집이 완료된 상태에요.</span>
 			</div>}
 			<Link href={`/challenges/${challengeId}`}><h2 className={styles.challengeTitle}>{title}</h2></Link>
-			{user?.role === "Admin" && <Image className={styles.kebab} src={ic_kebab} alt="Kebab menu" onClick={toggleMenu} />}
+			{(user?.id === challenge.applications.userId || user?.role === "Admin") && <Image className={styles.kebab} src={ic_kebab} alt="Kebab menu" onClick={toggleMenu} />}
 			{isKebabOpen && (
 				<div className={styles.kebabMenu}>
 					<button type="button" onClick={handleEdit}>수정하기</button>
-					<button type="button" onClick={() => setIsModalOpen(true)}>삭제하기</button>
+					{user?.role === "Admin" && <button type="button" onClick={() => setIsModalOpen(true)}>삭제하기</button>}
 				</div>
 			)}
 			</div>

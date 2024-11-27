@@ -2,34 +2,65 @@ import { getApplications } from "@/apis/applicationService.js";
 import Error from "@/components/Error.jsx";
 import Loading from "@/components/Loading.jsx";
 import Pagination from "@/components/Pagination.jsx";
+import Sort from "@/components/Sort.jsx";
 import Table from "@/components/Table.jsx";
 import { useViewport } from "@/context/ViewportProvider.jsx";
 import styles from "@/styles/Manage.module.css";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Manage() {
   const viewport = useViewport();
-  const [sort, setSort] = useState("");
+  // const [sort, setSort] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
+  const [currentSort, setCurrentSort] = useState("status=Waiting");
   const [query, setQuery] = useState({
     page,
     limit: 10,
+    keyword,
   });
+  
   const {
     data: applications,
     isPending,
     isError
   } = useQuery({
-    queryKey: ['applications', { ...query, page }, page],
-    queryFn: () => getApplications({ ...query, page }),
+    queryKey: ['applications', { ...query, page, keyword, }, page, keyword],
+    queryFn: () => getApplications({ ...query, page, keyword }),
     staleTime: 5 * 60 * 1000,
   });
   console.log("/admin/manage applications", applications);
 
   if (isPending) return <Loading />;
   if (isError) return <Error />;
+
+  const handleSortChange = (e) => {
+    setPage(1);
+    setCurrentSort(e.target.value);
+    const [key, value] = e.target.value.split('=');
+    const [sort, order] = value.split(",");
+    setQuery(prev => ({ ...prev, status: undefined, sort: undefined, page, [key]: sort, order }));
+  }
+
+  const handleSearchChange = (e) => {
+    setInput(e.target.value);
+    if (e.target.value === "") {
+      setKeyword("");
+    }
+  };
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      setKeyword(input);
+    }
+  }
+
+  const handleSearchIconClick = () => {
+    setKeyword(input);
+  }
 
   return (
     <main className={styles.main}>
@@ -38,11 +69,12 @@ function Manage() {
       </div>
       <div className={styles.searchAndSort}>
         <div className={styles.search}>
-          <input type="text" placeholder="챌린지 이름을 검색해보세요." />
-          <Image width={1.5 * viewport.size} height={1.5 * viewport.size} src="/images/ic_search.png" alt="Search" />
+          <input type="text" value={input} placeholder="챌린지 이름을 검색해보세요." onChange={handleSearchChange} onKeyDown={handleSearchKeyPress} />
+          <Image width={1.5 * viewport.size} height={1.5 * viewport.size} src="/images/ic_search.png" alt="Search" onClick={handleSearchIconClick} />
         </div>
         <div className={styles.sort}>
-          <select value={sort} onChange={(e) => {
+          <Sort currentValue={currentSort} onChange={handleSortChange}/>
+          {/* <select value={sort} onChange={(e) => {
             setSort(e.target.value);
             setPage(1);
             const [key, value] = e.target.value.split('=');
@@ -56,11 +88,11 @@ function Manage() {
             <option value="sort=desc,appliedAt">신청 시간 느린순</option>
             <option value="sort=asc,deadLine">마감 기한 빠른순</option>
             <option value="sort=desc,deadLine">마감 기한 느린순</option>
-          </select>
+          </select> */}
         </div>
       </div>
       <Table applications={applications?.list} />
-      <Pagination page={page} setPage={setPage} pageMaxCandi={Math.ceil(applications.totalCount / 10)} />
+      {applications && applications.list.length !== 0 ? <Pagination page={page} setPage={setPage} pageMaxCandi={Math.ceil(applications.totalCount / 10)} /> : null}
     </main>
   )
 }

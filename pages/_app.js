@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Header from '@/components/Header';
 import { UserProvider } from '@/context/UserProvider';
 import ViewportProvider from '@/context/ViewportProvider';
@@ -11,6 +12,10 @@ export default function App({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <UserProvider>
         <ViewportProvider>
+          <Head>
+            <title>Docthru</title>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
           <div className="container">
             <Header />
             <div className="subContainer">
