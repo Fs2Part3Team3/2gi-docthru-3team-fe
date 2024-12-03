@@ -3,7 +3,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--5px);
-	margin-top: var(--48px);
+	margin-top: var(--40px);
 
 	& div {
 		cursor: pointer;
@@ -12,8 +12,8 @@
 		align-items: center;
 		font-size: var(--18px);
 		font-weight: 400;
-		width: var(--48px);
-		height: var(--48px);
+		width: var(--40px);
+		height: var(--40px);
 		border-radius: var(--10px);
 		background-color: var(--gray-800);
 		color: var(--gray-700);

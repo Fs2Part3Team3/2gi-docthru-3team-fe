@@ -1,0 +1,127 @@
+.loading {text-align:center}
+.loading .outerCircle {
+	background-color:transparent;
+	border:8px solid rgba(97,82,72,0.9);
+	opacity:.9;
+	border-right:5px solid transparent;
+	border-left:5px solid transparent;
+	border-radius:100px;
+	width:110px;
+	height:110px;
+	margin:5em auto 0;
+	animation:spinPulse 5s infinite ease-in-out;
+	-moz-animation:spinPulse 5s infinite ease-in-out;
+	-webkit-animation:spinPulse 5s infinite ease-in-out;
+}
+.loading .innerCircle {
+	background-color:transparent;
+	border:5px solid rgba(189,215,60,0.6);
+	opacity:.9;
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+	border-radius:100px;
+	top:-100px;
+	width:90px;
+	height:90px;
+	margin:0 auto 20em;
+	position:relative;
+	animation:spinoffPulse 3s infinite linear;
+	-moz-animation:spinoffPulse 3s infinite linear;
+	-webkit-animation:spinoffPulse 3s infinite linear;
+}
+
+@-moz-keyframes spinPulse {
+	0% {
+		-moz-transform:rotate(160deg);
+		opacity:0;
+		box-shadow:0 0 1px #bdd73c
+	}
+	50% {
+		-moz-transform:rotate(145deg);
+		opacity:1
+	}
+	100% {
+		-moz-transform:rotate(-320deg);
+		opacity:0
+	}
+}
+@keyframes spinPulse {
+	0% {
+		-moz-transform:rotate(160deg);
+		opacity:0;
+		box-shadow:0 0 1px #bdd73c
+	}
+	50% {
+		-moz-transform:rotate(145deg);
+		opacity:1
+	}
+	100% {
+		-moz-transform:rotate(-320deg);
+		opacity:0
+	}
+}
+
+@-moz-keyframes spinoffPulse {
+	0% {
+		-moz-transform:rotate(0deg)
+	}
+	100% {
+		-moz-transform:rotate(360deg);
+	}
+}
+@keyframes spinoffPulse {
+	0% {
+		-moz-transform:rotate(0deg)
+	}
+	100% {
+		-moz-transform:rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spinPulse {
+	0% {
+		-webkit-transform:rotate(160deg);
+		opacity:0;
+		box-shadow:0 0 1px #bdd73c
+	}
+	50% {
+		-webkit-transform:rotate(145deg);
+		opacity:1
+	}
+	100% {
+		-webkit-transform:rotate(-320deg);
+		opacity:0
+	}
+}
+@keyframes spinPulse {
+	0% {
+		-webkit-transform:rotate(160deg);
+		opacity:0;
+		box-shadow:0 0 1px #bdd73c
+	}
+	50% {
+		-webkit-transform:rotate(145deg);
+		opacity:1
+	}
+	100% {
+		-webkit-transform:rotate(-320deg);
+		opacity:0
+	}
+}
+
+@-webkit-keyframes spinoffPulse {
+	0% {
+		-webkit-transform:rotate(0deg)
+	}
+	100% {
+		-webkit-transform:rotate(360deg)
+	}
+}
+@keyframes spinoffPulse {
+	0% {
+		-webkit-transform:rotate(0deg)
+	}
+	100% {
+		-webkit-transform:rotate(360deg)
+	}
+}

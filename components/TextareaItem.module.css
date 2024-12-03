@@ -1,0 +1,16 @@
+.textarea {
+    border-radius: 12px;
+    font-size: 16px;
+    color: #000000;
+    width: 100%;
+    padding: 11px 20px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    font-family: inherit;
+    resize: none;
+}
+
+.container {
+    width: 90%;
+    flex-shrink: 1;
+}

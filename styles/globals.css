@@ -5,7 +5,9 @@
   --48px: 3rem;
   --40px: 2.5rem;
   --32px: 2rem;
+  --28px: 1.75rem;
   --24px: 1.5rem;
+  --23px: 1.4375rem;
   --22px: 1.375rem;
   --20px: 1.25rem;
   --18px: 1.125rem;
@@ -37,6 +39,7 @@
   --gray-200: #212121;
   --gray-100: #131313;
   --gray-0: #000000;
+  --light-red: #ffe7e7;
   --prime-red: #eb3e3e;
   --prime-blue: #558fff;
   --prime-orange: #eb5230;
@@ -100,6 +103,19 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: var(--brand-black);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--brand-black);
+}
+
+a, button, label {
+  cursor: pointer;
+}
+
 .inline {
   display: inline;
 }
@@ -138,4 +154,15 @@ img {
 
 .none {
   display: none;
+}
+
+.ql-container.ql-snow {
+  height: 35rem;
+  overflow: auto;
+}
+
+input::placeholder, textarea::placeholder {
+  font-family: inherit;
+  font-size: var(--14px);
+  color: #888;
 }

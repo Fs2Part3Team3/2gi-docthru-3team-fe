@@ -1,0 +1,167 @@
+.head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	& h1 {
+		font-size: var(--20px);
+		font-weight: 600;
+	}
+
+	& .buttons {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: .3rem;
+
+		& .button {
+			font-size: var(--16px);
+			font-weight: 600;
+			height: var(--40px);
+			padding: 0 .5rem;
+			display: flex;
+			align-items: center;
+			gap: .3rem;
+			border-radius: var(--12px);
+
+			&.giveupButton {
+				background-color: var(--light-red);
+				color: var(--prime-red);
+				border: none;
+			}
+
+			&.tempSave {
+				background-color: var(--brand-white);
+				color: var(--brand-black);
+				border: 1px solid var(--brand-black);
+			}
+
+			&.submit {
+				background-color: var(--brand-black);
+				color: var(--brand-white);
+				border: 1px solid var(--brand-black);
+			}
+		}
+	}
+}
+
+.TextEditor {
+	position: relative;
+	margin: 0 -1rem;
+}
+
+.TextEditor.fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 50%;
+	z-index: 100;
+	background-color: white;
+
+	@media (max-width: 744px) {
+		top: unset;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+.openButton {
+	position: fixed;
+	right: 0;
+	top: 10rem;
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	align-items: center;
+	justify-content: center;
+}
+
+.iframeContainer.closed {
+	& .iframe {
+		width: 10px;
+		height: 10px;
+	}
+
+	& .closeButton {
+		display: none;
+	}
+
+	& .newOpen {
+		display: none;
+	}
+}
+
+.iframeContainer.fixed {
+	position: fixed;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+	overflow: auto;
+
+	@media (max-width: 744px) {
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: unset;
+		aspect-ratio: 1.6 / 1;
+	}
+
+	& .iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.closeButton {
+		position: fixed;
+		z-index: 110;
+		left: 51%;
+		border-radius: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@media (max-width: 744px) {
+			left: 0;
+			top: 0;
+		}
+	}
+
+	.newOpen {
+		position: fixed;
+		z-index: 110;
+		right: 0;
+	}
+}
+
+.bringBackContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: var(--14px);
+	height: var(--48px);
+	border: 1px solid var(--brand-black);
+	margin: .5rem 0;
+	border-radius: var(--8px);
+
+	& .bringBackTitle {
+		display: flex;
+		align-items: center;
+	}
+
+	& .bringBackButton {
+		font-size: var(--14px);
+		font-weight: 600;
+		height: var(--32px);
+		background-color: var(--brand-black);
+		color: var(--brand-white);
+		padding: 0 1rem;
+		margin-right: var(--10px);
+		border-radius: var(--10px);
+	}
+}

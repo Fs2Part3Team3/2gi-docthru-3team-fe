@@ -1,4 +1,4 @@
-import styles from "@/styles/Home.module.css";
+import styles from "./X.module.css";
 
 function X({ width, height, onClick }) {
 	return (

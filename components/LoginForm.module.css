@@ -1,0 +1,165 @@
+.form {
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  height: 44.6rem;
+  flex-wrap: wrap;
+}
+
+.LoginForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 518px;
+  /* height: 285px; */
+  gap: 24px;
+}
+
+.LoginForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 16.71px;
+  text-align: left;
+  color: #171717;
+}
+
+.LoginForm input {
+  align-items: center;
+  width: 518px;
+  height: 48px;
+  padding: 16px 24px;
+  gap: 10px;
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: #e8ebed;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.password {
+  position: relative;
+  font-size: 4px;
+}
+
+.pwToggle {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.LoginForm input:focus {
+  outline-color: #d4d4d4;
+  color: black;
+}
+
+.loginButton {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  padding: 16px 124px;
+  border-radius: 12px;
+  background: #262626;
+  color: #ffffff;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 19.09px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.errorMassage {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 17.9px;
+  text-align: left;
+  color: #f74747;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
+.LoginForm {
+  &.inputError {
+    border: 2px solid red; /* 빨간 테두리 */
+  }
+
+  & .inputNormal {
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: #e8ebed; /* 정상 상태 테두리 */
+  }
+}
+
+.signupLink {
+  display: flex;
+  align-items: center;
+  color: #525252;
+  font-size: 1rem;
+  line-height: 19.09px;
+  font-weight: 400;
+  gap: 8px;
+}
+
+.socialLogin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  width: 100%;
+  min-width: 343px;
+  height: 48px;
+  background-color: var(--prime-yellow);
+  border: none;
+  border-radius: 12px;
+
+  & p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 19.09px;
+    color: #FFFFFF;
+  }
+}
+
+.loginBtn {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.googleLogin,
+.kakaoLogin {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/***** Mobile *****/
+@media (max-width: 744px) {
+  .LoginForm {
+    width: 240px;
+    height: 54px;
+  }
+
+  .LoginForm Input {
+    width: 343px;
+  }
+
+  .loginButton {
+    width: 343px;
+    white-space: nowrap;
+  }
+}

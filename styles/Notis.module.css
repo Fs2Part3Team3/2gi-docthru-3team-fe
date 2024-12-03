@@ -1,0 +1,37 @@
+.noti {
+	padding: var(--14px);
+	font-size: var(--14px);
+	border-bottom: 1px solid var(--gray-800);
+	text-align: left;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&.unread {
+		& .notiMessage {
+			color: var(--gray-100);
+		}
+	}
+
+	&.read {
+		& .notiMessage {
+			color: var(--gray-800);
+		}
+	}
+
+	& .notiDate {
+		color: var(--gray-700);
+	}
+}
+
+.notis {
+	& button {
+		font-size: 1rem;
+		margin: .5rem auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: .5rem;
+	}
+}

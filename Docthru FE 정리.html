@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes"/>
+
+<codeprint id="docuK-style">
+<div class="docuK rendered"><div class="sec" id="docuK-log"></div></div>
+
+<!-- From kipid.tistory CDN -->
+<script src="https://tistory1.daumcdn.net/tistory/1468360/skin/images/jquery.js"></script>
+<link rel="stylesheet" href="https://tistory1.daumcdn.net/tistory/1468360/skin/images/docuK-2.3.css">
+<script src="https://tistory3.daumcdn.net/tistory/1468360/skin/images/docuK-prepare-2.3.js" charset="utf-8"></script>
+</codeprint><!-- docuK-style -->
+
+<meta charset="utf-8" name="description" content=""/>
+
+<codeprint class="SEE">
+# Docthru FE 정리
+
+
+
+## TOC
+
+
+
+## npm install 에러시
+
+```
+npm install --legacy-peer-deps
+```/
+
+
+
+## font-size: var(--XXpx) 적극 활용
+
+
+
+## color, background-color: var(--prime-yellow/red/blue/orange) or var(--brand-black/white) or var(--gray-0 ~ 900) 적극 활용
+
+
+
+## queryClient.invalidateQueries({ queryKey: ['todos'] })
+
+
+
+## dev branch update 시
+
+```
+(feature/my-job 브랜치에서 작업 도중 다른 팀원에 의해 dev가 merge 된 경우)
+git checkout dev
+
+git pull upstream dev
+
+git checkout feature/my-job
+
+git merge dev
+```/
+
+
+
+## Vercel
+
+2gi-docthru-3team-fe :: Settings 에서
+
+```
+Install Command: npm install --include=optional sharp
+```/
+
+바꿔줘야 함.
+
+
+
+## RRA
+
+<ol class="refs"></ol>
+</codeprint><!-- SEE -->
+
+<codeprint id="docuK-script">
+<script>
+(function(m, $, undefined) {
+m.printMode=false;
+m.ripplesDisabled=true;
+m.recoeveUserId="kipid";
+m.recoCats="[IT/Programming]--국비 지원 코딩/공부--Project-2";
+m.wait=1024;
+m.delayPad=0;
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+**/
+window.disqus_config=function () {
+	this.page.identifier="Docthru-FE-정리"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	this.page.url=`https://kipid.tistory.com/entry/${this.page.identifier}`; // Replace PAGE_URL with your page's canonical URL variable
+};
+})(window.k, jQuery);
+</script>
+
+<!-- From kipid.tistory CDN -->
+<script src="https://tistory3.daumcdn.net/tistory/1468360/skin/images/docuK-postProcess-2.3.js" charset="utf-8"></script>
+</codeprint><!-- docuK-script -->

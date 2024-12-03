@@ -1,0 +1,180 @@
+.challenge {
+  width: 100%;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--12px);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.challengeInfo {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: var(--13px);
+  font-weight: 500;
+  height: var(--32px);
+  vertical-align: middle;
+  border-radius: 100px;
+  gap: .3em;
+  padding: 0 .8em;
+  margin-bottom: 1rem;
+
+  &.alarm {
+    background-color: var(--brand-black);
+    color: var(--brand-white);
+  }
+
+  &.fullParticipants {
+    background-color: var(--gray-800);
+  }
+}
+
+& h2.challengeTitle {
+  font-size: var(--22px);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.titleAndKebab {
+  position: relative;
+}
+
+.kebab {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  z-Index: 100;
+}
+
+.kebabMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 1.5rem;
+  right: 0;
+  width: 8.75rem;
+  border: 1px solid #D4D4D4;
+  border-radius: var(--8px);
+  z-Index: 100;
+
+  & button {
+    width: 100%;
+    height: 2.7rem;
+    border: none;
+    font-family: Pretendard;
+    color: #737373;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D4D4D4;
+  }
+
+  & button:first-child {
+    border-top-left-radius: var(--8px);
+    border-top-right-radius: var(--8px);
+  }
+
+  & button:last-child {
+    border-bottom-left-radius: var(--8px);
+    border-bottom-right-radius: var(--8px);
+    border-bottom: none;
+  }
+}
+
+.challengeFieldAndType {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5em;
+}
+
+.challengeField {
+  font-size: var(--14px);
+  font-weight: 700;
+  padding: var(--3px) var(--12px);
+  border-radius: var(--8px);
+
+  &.Next {
+    background-color: #79E16A;
+  }
+
+  &.Modern {
+    background-color: #F66E6B;
+  }
+
+  &.API {
+    background-color: #FF905E;
+  }
+
+  &.Web {
+    background-color: #F7Ea5D;
+  }
+
+  &.Career {
+    background-color: #7EB2EE;
+  }
+}
+
+& .challengeType {
+  font-size: var(--13px);
+  padding: var(--2px) var(--7px);
+  border: 1px solid var(--gray-700);
+  border-radius: var(--8px);
+}
+
+.hr {
+  border-color: var(--gray-850);
+  margin: 1rem 0;
+}
+
+.challengeDateAndParti {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  font-size: var(--13px);
+  font-weight: 400;
+
+  @media (max-width: 744px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  & .challengeDeadLine, & .challengeParticipants {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+  }
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .contiChall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9rem;
+    height: 2.125rem;
+    gap: .5em;
+    font-size: var(--14px);
+    font-weight: 700;
+    border-radius: 100px;
+    border-width: 1px;
+  }
+
+  & .seeMine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: 2.125rem;
+    gap: .5em;
+    font-size: var(--14px);
+    font-weight: 700;
+    border: none;
+  }
+}

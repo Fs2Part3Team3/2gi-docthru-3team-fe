@@ -1,0 +1,35 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 590px;
+  width: 100%;
+}
+
+.form {
+  width:100%;
+}
+
+.button {
+  border-radius: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  width: 100%;
+  padding: 11px 20px;
+  background-color: #000000;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.button:disabled {
+  background-color: #E5E5E5;
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 375px) {
+  .Container {
+    width:100%;
+    padding: 12px;
+  }
+}

@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 
 const instance = axios.create({
-	// baseURL: `https://panda-market-api.vercel.app`,
-	baseURL: `http://localhost:3100/api`,
-	withCredentials: true,
+	baseURL: `https://twogi-docthru-3team-be.onrender.com/api`,
+	// baseURL: `http://localhost:3100/api`,
+	// withCredentials: true,
 });
 
 instance.interceptors.request.use(function (config) {
@@ -23,8 +23,9 @@ instance.interceptors.response.use(res => res, async (error) => {
 	if (user && (response?.status === 401 || response?.status === 403)) {
 		const userJSON = JSON.parse(user);
 		if (!originalRequest._retry) {
-			const res = await instance.post('/account/renew-token', {}, { _retry: true });
+			const res = await instance.post('/auth/refresh-token', { refreshToken: userJSON.refreshToken }, { _retry: true });
 			userJSON.accessToken = res.data.accessToken;
+			userJSON.refreshToken = res.data.refreshToken;
 			localStorage.setItem("user", JSON.stringify(userJSON));
 			originalRequest._retry = true;
 			return instance(originalRequest);

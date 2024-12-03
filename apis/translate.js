@@ -15,3 +15,8 @@ export const PROGRESS = {
 	ongoing: "진행중",
 	completed: "마감",
 };
+
+export const GRADE = {
+	Amateur: "일반",
+	Expert: "전문가",
+}

@@ -1,0 +1,120 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.no {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 32rem;
+}
+
+.table {
+  width: 100%;
+	min-width: 696px;
+  border-collapse: collapse;
+  font-size: var(--13px);
+  text-align: left;
+}
+
+.th {
+  background-color: var(--brand-black);
+	color: var(--brand-white);
+  font-weight: bold;
+  padding: var(--8px);
+}
+
+.th:first-child {
+  border-top-left-radius: var(--8px);
+  border-bottom-left-radius: var(--8px);
+}
+
+.th:last-child {
+  border-top-right-radius: var(--8px);
+  border-bottom-right-radius: var(--8px);
+}
+
+.td {
+  white-space: nowrap;
+  padding: var(--8px);
+  height: 3rem;
+  border-bottom: 1px solid var(--gray-700);
+  color: #737373;
+  font-size: var(--13px);
+}
+
+.td .Waiting {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #FFFDE7;
+  color: #F2BC00;
+}
+
+.td .Accepted {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #DFF0FF;
+  color: #4095DE;
+}
+
+.td .Rejected {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #FFF0F0;
+  color: #E54946;
+}
+
+.td .Invalidated {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #E5E5E5;
+  color: #737373;
+}
+
+/* 열 너비 조정 */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 5%; /* No. */
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 10%; /* 분야 */
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  width: 10%; /* 카테고리 */
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  width: 40%; /* 챌린지 제목 */
+}
+
+.table th:nth-child(5),
+.table td:nth-child(5) {
+  width: 10%; /* 모집 인원 */
+}
+
+.table th:nth-child(6),
+.table td:nth-child(6) {
+  width: 10%; /* 신청일 */
+}
+
+.table th:nth-child(7),
+.table td:nth-child(7) {
+  width: 10%; /* 마감 기한 */
+}
+
+.table th:nth-child(8),
+.table td:nth-child(8) {
+  width: 10%; /* 상태 */
+}

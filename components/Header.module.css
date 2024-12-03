@@ -1,0 +1,129 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: var(--10px) 12.5rem;
+
+  @media (max-width: 1200px) {
+    padding: var(--10px) var(--20px);
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.adminNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manageButton,
+.listButton {
+  margin: 1rem;
+  cursor: pointer;
+  color: #737373;
+  font-weight: 500;
+}
+
+.active {
+  color: #262626;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  padding: var(--10px) var(--20px);
+  background-color: #FFC117;
+  color: #fff;
+  border: none;
+  border-radius: var(--5px);
+  cursor: pointer;
+}
+
+.notiContainer {
+  position: relative;
+
+  & .notiDropDown {
+    position: absolute;
+    border: 1px solid var(--gray-700);
+    width: 21.4375rem;
+    right: 0;
+    background-color: var(--brand-white);
+    border-radius: var(--8px);
+    z-index: 1000;
+    max-height: 30rem;
+    overflow: auto;
+
+    & h3 {
+      font-size: var(--16px);
+      margin: 1rem;
+    }
+  }
+}
+
+.notificationButton {
+  padding: var(--8px);
+  cursor: pointer;
+}
+
+.userContainer {
+  position: relative;
+  font-size: var(--16px);
+
+  & .userDropDown {
+    position: absolute;
+    right: 0;
+    width: 152px;
+    background-color: var(--brand-white);
+    border-radius: var(--8px);
+    padding: .7rem;
+    z-index: 1000;
+
+    & .userDropDownItem {
+      border: none;
+      font-size: var(--16px);
+      font-weight: 500;
+      padding: .5rem 0;
+      width: 100%;
+      text-align: left;
+      border-top: 1px solid var(--gray-800);
+    }
+  }
+}
+
+.user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .7rem;
+
+  & .nicknameAndGrade {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    & .nickname {
+      font-size: var(--14px);
+      font-weight: 500;
+    }
+
+    & .grade {
+      font-size: var(--12px);
+      font-weight: 500;
+      color: var(--gray-400)
+    }
+  }
+}
+
+.userButton {
+  padding: var(--8px);
+  cursor: pointer;
+}

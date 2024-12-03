@@ -1,0 +1,31 @@
+.submitButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.textarea {
+  border-radius: 12px;
+  height: 80px;
+  font-size: 16px;
+  width: 100%;
+  color: #000000;
+  padding: 11px 20px;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+  font-family: inherit;
+  resize: none;
+}
+
+.feedbackForm {
+  display: flex;
+  align-items: center;
+  width:100%;
+  margin-top: 20px;
+}

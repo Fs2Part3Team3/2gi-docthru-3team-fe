@@ -1,0 +1,8 @@
+.x {
+  cursor: pointer;
+}
+
+.x line {
+  stroke: black;
+  stroke-width: 10%;
+}
