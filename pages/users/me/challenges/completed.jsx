@@ -9,8 +9,8 @@ import { getMyChallsCompleted } from "@/apis/challengeService.js";
 import Loading from "@/components/Loading.jsx";
 import Challenge from "@/components/Challenge.jsx";
 import Pagination from "@/components/Pagination.jsx";
-import PopUp from "@/components/PopUp";
-import useAuth from "@/utills/useAuth";
+import PopUp from "@/components/PopUp.jsx";
+import useAuth from "@/hooks/useAuth.jsx";
 
 const PAGE_SIZE = 5;
 
@@ -31,7 +31,7 @@ function Completed() {
 		retry: false,
 	});
 	console.log("Completed challenges", challenges);
-  
+
 	if (isPending) return <Loading />;
 
 	return (

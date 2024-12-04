@@ -52,6 +52,20 @@ BE: Express, Prisma, PostgreSQL, Render
 
 - 신지원
 
+#### 신청한 챌린지 목록 조회 페이지(Admin)
+- 일부 css 수정
+- Sort 컴포넌트화
+- Search 기능 구현
+
+#### 신청한 챌린지 상세 조회 페이지(Admin)
+- 승인 및 거절 기능 구현
+- 승인 및 거절 모달 구현
+
+#### 회원 및 관리자만 접근 가능한 페이지 리다이렉트 구현
+- useAuth 훅 구현
+
+#### 반응형
+- kebab, sort 모달 등 화면 다른 곳 클릭 시 닫히도록 구현
 
 
 - 현준배
@@ -97,4 +111,4 @@ FE나의 챌린지 관리 (참여 중인 챌린지 목록 조회, 완료한 챌�
 
 FE: https://2gi-docthru-3team-fe.vercel.app/
 
-BE:
+BE: https://twogi-docthru-3team-be.onrender.com

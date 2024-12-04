@@ -10,6 +10,10 @@
     resize: none;
 }
 
+.textareaContainer {
+    width: 100%;
+}
+
 .container {
     width: 90%;
     flex-shrink: 1;

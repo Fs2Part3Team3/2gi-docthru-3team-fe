@@ -10,8 +10,8 @@ import Image from "next/image";
 import { useRouter } from 'next/router';
 import Modal from "@/components/Modal.jsx";
 import { useState } from "react";
-import PopUp from "@/components/PopUp";
-import useAuth from "@/utills/useAuth";
+import PopUp from "@/components/PopUp.jsx";
+import useAuth from "@/hooks/useAuth.jsx";
 
 function ManageApp() {
 	const [isModalOpen, setIsModalOpen] = useState(false);

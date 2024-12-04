@@ -98,7 +98,7 @@ function SignupForm() {
               width={24}
               height={24}
               className={styles.pwToggle}
-              src={pwIsVisible ? '/images/vector.png' : '/images/btn_visibility_off_24px.png'}
+              src={pwIsVisible ? '/images/btn_visibility_on.png' : '/images/btn_visibility_off_24px.png'}
               alt="비밀번호 보기"
               onClick={() => setPwIsVisible(prev => !prev)}
               priority
@@ -124,7 +124,7 @@ function SignupForm() {
               width={24}
               height={24}
               className={styles.pwToggle}
-              src={pwcIsVisible ? '/images/vector.png' : '/images/btn_visibility_off_24px.png'}
+              src={pwcIsVisible ? '/images/btn_visibility_on.png' : '/images/btn_visibility_off_24px.png'}
               alt="비밀번호 보기"
               onClick={() => setPwcIsVisible(prev => !prev)}
               priority

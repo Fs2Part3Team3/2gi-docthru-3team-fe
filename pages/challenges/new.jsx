@@ -8,7 +8,7 @@ import styles from "@/styles/new.module.css"
 import instance from "@/apis/instance";
 import { useRouter } from "next/router"
 import PopUp from "@/components/PopUp";
-import useAuth from "@/utills/useAuth";
+import useAuth from "@/hooks/useAuth";
 
 function NewChallenge() {
   const router = useRouter();
@@ -106,7 +106,7 @@ function NewChallenge() {
               name="deadLine"
               control={control}
               render={({ field }) => (
-                <CustomDatePicker 
+                <CustomDatePicker
                     id="deadLine"
                     label="마감일"
                     onChange={(date) => field.onChange(date)}

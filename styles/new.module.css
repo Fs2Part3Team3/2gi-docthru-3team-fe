@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    width:590px;
+    max-width:590px;
 }
 
 .form {

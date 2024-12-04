@@ -1,19 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getWorkById, deleteWorkById, toggleLike } from "@/apis/workService";
+import { getWorkById, deleteWorkById, toggleLike } from "@/apis/workService.js";
 import styles from "@/styles/WorkDetail.module.css";
 import likeIconActive from "@/public/images/ic_heart.png";
 import likeIconInactive from "@/public/images/ic_inactiveheart.png";
-import FeedbackForm from "@/components/FeedbackInput";
-import FeedbackList from "@/components/FeedbackList";
+import FeedbackForm from "@/components/FeedbackInput.jsx";
+import FeedbackList from "@/components/FeedbackList.jsx";
 import Image from "next/image";
 import { format } from "date-fns";
-import { FIELD, TYPE } from "@/apis/translate";
-import { useUser } from "@/context/UserProvider";
+import { FIELD, TYPE } from "@/apis/translate.js";
+import { useUser } from "@/context/UserProvider.jsx";
 import menu from "@/public/images/feedback_menu.png"
-import useAuth from "@/utills/useAuth";
-import PopUp from "@/components/PopUp";
+import useAuth from "@/hooks/useAuth.jsx";
+import PopUp from "@/components/PopUp.jsx";
+import Loading from "@/components/Loading.jsx";
+import sanitizeHtml from 'sanitize-html';
+import { SANITIZE_OPTIONS } from "./edit.jsx";
 
 const WorkDetail = () => {
   const router = useRouter();
@@ -68,7 +71,7 @@ const WorkDetail = () => {
   }, [isMenuOpen]);
 
   if (isLoading) {
-    return <div>로딩 중...</div>;
+    return <Loading />;
   }
 
   if (isError) {
@@ -150,7 +153,7 @@ const WorkDetail = () => {
               : "날짜 정보 없음"}
           </span>
         </div>
-        <p className={styles.content}>{data?.content || "내용 없음"}</p>
+        <p className={styles.content} dangerouslySetInnerHTML={{ __html: sanitizeHtml(data?.content, SANITIZE_OPTIONS) }}></p>
       </div>
       <FeedbackForm workId={workId} />
       <FeedbackList workId={workId} />

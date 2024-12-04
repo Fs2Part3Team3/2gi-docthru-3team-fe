@@ -13,8 +13,8 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { deleteWorkById, getWorkById, patchWorkById } from '@/apis/workService.js';
 import PopUp from '@/components/PopUp.jsx';
 import { useUser } from '@/context/UserProvider.jsx';
-import DelModal from '@/components/DelModal';
-import useAuth from '@/utills/useAuth';
+import DelModal from '@/components/DelModal.jsx';
+import useAuth from '@/hooks/useAuth.jsx';
 
 const MODULES = {
   toolbar: [

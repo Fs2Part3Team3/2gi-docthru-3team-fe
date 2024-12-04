@@ -2,7 +2,7 @@ import { postLogin } from '@/apis/authService';
 import styles from './LoginForm.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import PopUp from './PopUp';
@@ -11,6 +11,7 @@ import google from '@/public/images/google.webp';
 import kakao from '@/public/images/kakao.png';
 
 function LoginForm() {
+  const [errorMessage, setErrorMessage] = useState(null);
   const router = useRouter();
   const setUser = useSetUser();
   const [pwIsVisible, setPwIsVisible] = useState(false);
@@ -32,6 +33,20 @@ function LoginForm() {
     },
   });
 
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const error = query.get('error');
+    if (error && !errorMessage) {
+      setErrorMessage(decodeURIComponent(error));  // URL에서 error를 가져와서 상태에 저장
+    }
+     // errorMessage가 null로 바뀔 때 URL에서 error 파라미터를 제거
+     if (!errorMessage) {
+      const { pathname, query } = router;
+      delete query.error;
+      router.replace({ pathname, query }, undefined, { shallow: true });
+    }
+  }, []);
+
   const onSubmit = async ({ email, password }) => {
     try {
       const userData = await postLogin({ email, password });
@@ -48,8 +63,14 @@ function LoginForm() {
     }
   };
 
+  const handleClosePopup = () => {
+    setErrorMessage(null);
+    router.push('/login');
+  };
+
   return (
     <div className={styles.form}>
+      {errorMessage && <PopUp onlyCancel={true} error={{ message: errorMessage }} setError={setErrorMessage} onClose={handleClosePopup} />}
       <form className={styles.LoginForm} onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="email">
           <p>이메일</p>
@@ -86,7 +107,7 @@ function LoginForm() {
               width={24}
               height={24}
               className={styles.pwToggle}
-              src={pwIsVisible ? '/images/vector.png' : '/images/btn_visibility_off_24px.png'}
+              src={pwIsVisible ? '/images/btn_visibility_on.png' : '/images/btn_visibility_off_24px.png'}
               alt="비밀번호 보기"
               onClick={() => setPwIsVisible(prev => !prev)}
               priority
@@ -99,11 +120,11 @@ function LoginForm() {
         <div className={styles.socialLogin}>
           <p>소셜 로그인</p>
           <div className={styles.loginBtn}>
-            <Image 
-              src={google} 
-              alt="구글 로그인" 
-              className={styles.googleLogin} 
-              priority 
+            <Image
+              src={google}
+              alt="구글 로그인"
+              className={styles.googleLogin}
+              priority
               onClick={() => { window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/google` }}
             />
             <Image

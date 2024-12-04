@@ -6,7 +6,7 @@ import DelModal from "@/components/DelModal.jsx";
 import Loading from "@/components/Loading.jsx";
 import LoopSlider from "@/components/LoopSlider";
 import PopUp from "@/components/PopUp.jsx";
-import useAuth from "@/utills/useAuth";
+import useAuth from "@/hooks/useAuth.jsx";
 import { useUser } from "@/context/UserProvider.jsx";
 import { useViewport } from "@/context/ViewportProvider.jsx";
 import { SANITIZE_OPTIONS } from "@/pages/work/[id]/edit.jsx";
@@ -158,7 +158,7 @@ function ChallengeDetail() {
 
     updateData();
   }, [challenge]);
-  
+
   useEffect(() => {
     const outSideClick = (e) => {
       const { target } = e;

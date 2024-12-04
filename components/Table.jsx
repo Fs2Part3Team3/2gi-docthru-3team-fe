@@ -28,7 +28,7 @@ function Table({ applications, me }) {
                   <td className={styles.td}>{id}</td>
                   <td className={styles.td}>{TYPE[docType]}</td>
                   <td className={styles.td}>{[FIELD[field]]}</td>
-                  <td className={styles.td}><Link href={`/admin/manage/${id}`}>{title}</Link></td>
+                  <td className={styles.td}><Link href={me ? `/users/me/challenges/applied/${id}` : `/admin/manage/${id}`}>{title}</Link></td>
                   <td className={styles.td}>{maxParticipants}</td>
                   <td className={styles.td}>{moment(new Date(appliedAt)).format("YY/MM/DD")}</td>
                   <td className={styles.td}>{moment(new Date(deadLine)).format("YY/MM/DD")}</td>

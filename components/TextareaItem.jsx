@@ -3,7 +3,7 @@ import styles from "./TextareaItem.module.css"
 
 function TextareaItem({id, label, register = {}, ...inputProps}) {
     return (
-        <div className={styles.container}>
+        <div className={styles.textareaContainer}>
             {label && <Label htmlFor={id}>{label}</Label>}
             <textarea className={styles.textarea}
                 id={id}
@@ -13,6 +13,5 @@ function TextareaItem({id, label, register = {}, ...inputProps}) {
         </div>
     )
     };
-  
+
 export default TextareaItem;
-  

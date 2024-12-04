@@ -7,8 +7,8 @@ import TextareaItem from "@/components/TextareaItem";
 import Dropdown from "@/components/Dropdown";
 import CustomDatePicker from "@/components/CustomDatePicker";
 import styles from "@/styles/editChallenge.module.css";
-import PopUp from "@/components/PopUp";
-import useAuth from "@/utills/useAuth";
+import PopUp from "@/components/PopUp.jsx";
+import useAuth from "@/hooks/useAuth.jsx";
 
 function editChallenge() {
   const [initialData, setInitialData] = useState(null);
@@ -37,7 +37,7 @@ function editChallenge() {
           console.log(data);
           setInitialData(data);
           reset(data);
-          
+
         })
         .catch((error) => {
           console.error("데이터 불러오기 실패:", error);
@@ -45,7 +45,7 @@ function editChallenge() {
     }
   }, [challengeId, reset]);
 
-  
+
 
   const onSubmit = async (data) => {
     try {
@@ -76,7 +76,7 @@ function editChallenge() {
       router.push(`/challenges/${challengeId}`);
     } catch (error) {
       console.error("챌린지 수정 중 오류:", error);
-    } 
+    }
   };
 
 

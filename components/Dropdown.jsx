@@ -28,13 +28,13 @@ const Dropdown = ({ id, label, options, placeholder, value, onChange }) => {
         <div onClick={() => setIsOpen(!isOpen)}>▼</div>
       </div>
       {isOpen && (
-        <ul>
+        <div className={styles.dropdown}>
           {options.map((option, index) => (
-            <li key={index} onClick={() => handleSelect(option)}>
+            <span className={styles.content} key={index} onClick={() => handleSelect(option)}>
               {FIELD[option] || TYPE[option]}
-            </li>
+            </span>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
