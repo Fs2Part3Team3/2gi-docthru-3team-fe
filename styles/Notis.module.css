@@ -35,3 +35,28 @@
 		gap: .5rem;
 	}
 }
+
+.notisRead {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	padding: 1rem;
+
+	& h2 {
+		font-size: var(--18px);
+		font-weight: 700;
+	}
+
+	& .notiRead {
+		font-size: var(--16px);
+		color: var(--brand-black);
+		text-align: left;
+		padding: 1rem;
+	}
+}
+
+.noMoreNotis {
+	padding: 5rem 0;
+	margin: 0 auto;
+}

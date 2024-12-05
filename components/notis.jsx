@@ -28,6 +28,7 @@ export function Noti({ noti }) {
 			clearTimeout(timeout);
 			timeout = setTimeout(() => {
 				queryClient.invalidateQueries({ queryKey: ["notis", user?.id] });
+				queryClient.invalidateQueries({ queryKey: ["notisRead", user?.id] });
 			}, 3000);
 		},
 		onError: (error) => {

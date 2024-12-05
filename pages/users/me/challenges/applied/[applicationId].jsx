@@ -7,18 +7,21 @@ import styles from '@/styles/ManageApp.module.css';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import moment, { invalid } from 'moment';
 import Image from 'next/image';
+import ic_kebab_menu from '@/public/images/ic_kebab_menu.png';
+import ic_open_link from '@/public/images/ic_open_link.png';
 import { useRouter } from 'next/router';
-import Modal from '@/components/Modal';
+import UserDelModal from '@/components/UserDelModal';
 import { useState } from 'react';
 import { useUser } from '@/context/UserProvider';
+import { deleteApplication } from '@/apis/applicationService';
 
 function AppliedChallenge() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [invalidMessage, setInvalidMessage] = useState('');
   const viewport = useViewport();
   const router = useRouter();
   const user = useUser();
   const { applicationId } = router.query;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -43,8 +46,24 @@ function AppliedChallenge() {
     },
   });
 
-  const handleInvalidate = () => {
-    mutation.mutate({ status: 'Invalidated' });
+  const handleMenuToggle = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  const onSubmit = async applicationId => {
+    try {
+      const applicationData = await deleteApplication(applicationId);
+      console.log('취소 성공', applicationData);
+      queryClient.setQueryData(['applications', applicationId], null);
+      queryClient.invalidateQueries({ queryKey: ['applications', '*'] });
+      router.push('/users/me/challenges/applied');
+    } catch (error) {
+      console.log('취소 실패', error);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   if (isPending) return <Loading />;
@@ -86,18 +105,23 @@ function AppliedChallenge() {
               )}
             </div>
             <h1>{challenge.title}</h1>
-            <div className={styles.subHead}>
-              <div>
+            <div className={styles.subHeadBox}>
+              <div className={styles.subHead}>
                 <Field field={challenge.field} />
-                <Type type={challenge.doctype} />
+                <Type type={challenge.docType} />
               </div>
-              {application.status === 'Waiting' && (
-                <div className={styles.buttons}>
-                  <button className={`${styles.button} ${styles.invalidate}`} type="button" onClick={handleInvalidate}>
+              <div className={styles.delKebab}>
+                {application.status === 'Waiting' && (
+                  <button className={styles.menuButton} onClick={handleMenuToggle}>
+                    <Image src={ic_kebab_menu} alt="더보기" width={24} height={24} />
+                  </button>
+                )}
+                {isMenuOpen && (
+                  <button className={styles.delButton} type="button" onClick={() => setIsModalOpen(true)}>
                     취소하기
                   </button>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -119,8 +143,22 @@ function AppliedChallenge() {
         <h2>원문 링크</h2>
         <div className={styles.iframeContainer}>
           <iframe src={challenge.docUrl} width="100%" height="100%" />
+          <a href={challenge.docUrl} target="_blank" rel="noopener noreferrer" className={styles.linkButton}>
+            <Image src={ic_open_link} height={26} width={79} alt="원문 링크 열기" />
+          </a>
         </div>
       </div>
+      {isModalOpen && (
+        <UserDelModal
+          title="정말 취소하시겠어요?"
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={() => {
+            onSubmit(applicationId);
+            setIsModalOpen(false);
+          }}
+          onCancel={handleCancel}
+        />
+      )}
     </main>
   );
 }

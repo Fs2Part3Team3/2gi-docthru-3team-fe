@@ -1,0 +1,83 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 24px 38.5px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 327px;
+  height: 187px;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.modalHeader {
+  width: 250px;
+  height: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.x {
+  width: 24px;
+  height: 24px;
+}
+
+.modalTitle {
+  font-size: 18px;
+}
+
+.contentTitle {
+  font-size: 1rem;
+}
+
+.modalContent {
+  height: 75%;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  width: 188px;
+  height: 2.5rem;
+  border-radius: var(--12px);
+  border: 1px;
+  font-size: 1rem;
+  font-family: Pretendard;
+  cursor: pointer;
+
+  & .reject {
+    width: 90px;
+    color: var(--brand-black);
+    background-color: #ffffff;
+    border-radius: var(--12px);
+    border: 1px solid var(--brand-black);
+    font-family: Pretendard;
+    line-height: 19.09px;
+  }
+
+  & .approve {
+    width: 90px;
+    color: #ffffff;
+    background-color: var(--brand-black);
+    border-radius: var(--12px);
+    border: 1px solid var(--brand-black);
+    font-family: Pretendard;
+    line-height: 19.09px;
+  }
+}

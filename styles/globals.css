@@ -184,7 +184,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Firefox */
-body {
+* {
   scrollbar-width: thin;
   scrollbar-color: #888 #f0f0f0;
 }

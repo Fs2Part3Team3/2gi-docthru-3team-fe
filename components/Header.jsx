@@ -78,7 +78,10 @@ const Header = () => {
             <div ref={notiRef} className={styles.notiContainer}>
                 <Image width={24} height={24} src={gotNotis ? `/images/ic_noti.png` : `/images/ic_noti_empty.png`} alt="noti" className={styles.notificationButton} onClick={() => setIsNotiOpen(prev => !prev)} />
               {isNotiOpen && <div className={styles.notiDropDown}>
-                <h3>알림</h3>
+                <div className={styles.notiHeader}>
+                  <h3>알림</h3>
+                  <Link href="/users/me/notis-read"><button className={styles.notiButton}>읽은 알림 보기</button></Link>
+                </div>
                 <Notis />
               </div>}
             </div>

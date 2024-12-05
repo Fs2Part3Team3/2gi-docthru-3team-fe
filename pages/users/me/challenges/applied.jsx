@@ -26,7 +26,7 @@ function Applied() {
 	const [page, setPage] = useState(1);
 	const user = useUser();
 	const { data: applications, isPending, isError } = useQuery({
-		queryKey: ["applications", "completed", user?.id, query],
+		queryKey: ["applications", user?.id, query],
 		queryFn: () => getMyChallsApplied(query),
 		staleTime: 5 * 60 * 1000,
 	});
