@@ -12,7 +12,7 @@ export async function getWorkById(workId) {
 
 export async function patchWorkById(workId, content) {
 	try {
-		const result = await instance.patch(`/works/${workId}`, { content });
+		const result = await instance.patch(`/works/${workId}`, { content, isSubmitted: true });
 		return result?.data;
 	} catch (err) {
 		console.error(err);

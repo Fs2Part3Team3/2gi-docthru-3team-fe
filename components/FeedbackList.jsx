@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchFeedbacks, deleteFeedback, updateFeedback } from "@/apis/feedbackService";
 import TextareaItem from "./TextareaItem";
@@ -12,6 +12,7 @@ const FeedbackItem = ({ feedback }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(feedback.content);
+  const kebabRef = useRef();
 
   const user = useUser();
   const queryClient = useQueryClient();
@@ -52,19 +53,36 @@ const FeedbackItem = ({ feedback }) => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (kebabRef.current && !kebabRef.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
     <div className={styles.feedbackItem}>
-      <p>
-        {feedback?.user?.nickname}
-      </p>
-      <small>
-        {format(new Date(feedback.createdAt), "yyyy/MM/dd HH:mm")}
-      </small>
+      <div className={styles.profile}>
+        <Image
+          src={feedback?.user?.profileUrl || "/images/ic_profile.png"}
+          alt="프로필 이미지"
+          width={32}
+          height={32}
+        />
+        <div className={styles.nameDate}>
+          <p>{feedback?.user?.nickname}</p>
+          <small>
+            {format(new Date(feedback.createdAt), "yyyy/MM/dd HH:mm")}
+          </small>
+        </div>
+      </div>
       {isEditing ? (
         <div className={styles.editFeedback}>
-          <div>
-            <button onClick={() => setIsEditing(false)}>취소</button>
-            <button onClick={handleUpdate} disabled={updateMutation.isLoading}>
+          <div className={styles.editBtn}>
+            <button className={styles.cancel} onClick={() => setIsEditing(false)}>취소</button>
+            <button className={styles.edit} onClick={handleUpdate} disabled={updateMutation.isLoading}>
               {updateMutation.isLoading ? "수정 중..." : "수정 완료"}
             </button>
           </div>
@@ -90,7 +108,7 @@ const FeedbackItem = ({ feedback }) => {
               </button>
             )}
             {isMenuOpen && (
-              <div className={styles.dropdownMenu}>
+              <div ref={kebabRef} className={styles.dropdownMenu}>
                 <button onClick={() => setIsEditing(true)}>수정하기</button>
                 <button onClick={handleDelete} disabled={deleteMutation.isLoading}>
                   {deleteMutation.isLoading ? "삭제 중..." : "삭제하기"}

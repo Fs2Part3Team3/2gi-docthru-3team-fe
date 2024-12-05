@@ -216,20 +216,27 @@
   }
 }
 
-.delButton {
+.editDelButtons {
   position: absolute;
-  bottom: -48px;
+  bottom: -80px;
   right: 0;
   font-size: 1rem;
-  font-family: Pretendard;
   cursor: pointer;
   width: 139px;
-  height: 43px;
-  border: 1px solid var(--gray-800);
+  height: 80px;
   border-radius: var(--12px);
-  background-color: #ffffff;
-  color: #737373;
-  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & .editButton, & .delButton {
+    border: 1px solid var(--gray-800);
+    background-color: #ffffff;
+    color: #737373;
+    height: 40px;
+    width: 139px;
+  }
 }
 
 .delKebab {

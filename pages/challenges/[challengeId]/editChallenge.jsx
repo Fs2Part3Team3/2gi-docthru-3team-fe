@@ -9,6 +9,7 @@ import CustomDatePicker from "@/components/CustomDatePicker";
 import styles from "@/styles/editChallenge.module.css";
 import PopUp from "@/components/PopUp.jsx";
 import useAuth from "@/hooks/useAuth.jsx";
+import { useQueryClient } from "@tanstack/react-query";
 
 function editChallenge() {
   const [initialData, setInitialData] = useState(null);
@@ -16,6 +17,7 @@ function editChallenge() {
   const docTypes = ["Blog", "Document"];
   const router = useRouter();
   const { challengeId } = router.query;
+  const queryClient = useQueryClient();
 
   const { errorMessage, setErrorMessage } = useAuth();
   const { handleSubmit, control, watch, reset } = useForm({
@@ -72,7 +74,7 @@ function editChallenge() {
       console.log("수정된 데이터:", updatedFields);
 
       await updateChallenge(challengeId, updatedFields);
-
+      queryClient.invalidateQueries({ queryKey: ["challenges"] });
       router.push(`/challenges/${challengeId}`);
     } catch (error) {
       console.error("챌린지 수정 중 오류:", error);

@@ -34,6 +34,7 @@ function AppliedChallenge() {
     queryFn: () => getApplicationWithId(applicationId),
     staleTime: 5 * 60 * 1000,
   });
+  console.log("application", application);
 
   const mutation = useMutation({
     mutationFn: data => invalidateApplication(applicationId, data.status, data.invalidationComment),
@@ -117,9 +118,15 @@ function AppliedChallenge() {
                   </button>
                 )}
                 {isMenuOpen && (
-                  <button className={styles.delButton} type="button" onClick={() => setIsModalOpen(true)}>
-                    취소하기
-                  </button>
+                  <div className={styles.editDelButtons}>
+                    <button className={styles.editButton} type="button" onClick={() => router.push(`/challenges/${application?.challenge?.id}/editChallenge`)}>수정하기</button>
+                    <button className={styles.delButton} type="button" onClick={() => {
+                      queryClient.invalidateQueries({ queryKey: ["applications"] });
+                      setIsModalOpen(true)
+                    }}>
+                      취소하기
+                    </button>
+                  </div>
                 )}
               </div>
             </div>

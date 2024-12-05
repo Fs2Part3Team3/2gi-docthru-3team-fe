@@ -40,6 +40,9 @@ function ManageApp() {
     onSuccess: data => {
       console.log('successfully updated: ', data);
       queryClient.invalidateQueries(['applications', applicationId]);
+      if (data.message.includes('거절 사유가 필요합니다')) {
+        setErrorMessage({ message: data.message });
+      } else setErrorMessage({ message: "승인 완료되었습니다" });
     },
     onError: error => {
       console.error(error);

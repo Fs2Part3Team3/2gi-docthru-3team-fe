@@ -9,12 +9,14 @@ import instance from "@/apis/instance";
 import { useRouter } from "next/router"
 import PopUp from "@/components/PopUp";
 import useAuth from "@/hooks/useAuth";
+import { useQueryClient } from "@tanstack/react-query";
 
 function NewChallenge() {
   const router = useRouter();
   const { errorMessage, setErrorMessage } = useAuth();
   const fields = ["Next", "API", "Career", "Modern", "Web"];
   const doctypes = ["Blog", "Document"];
+  const queryClient = useQueryClient();
 
   const { handleSubmit, control, watch} = useForm({
     defaultValues: {
@@ -33,7 +35,9 @@ function NewChallenge() {
     try {
       const response = await instance.post("/challenges", data);
       console.log("챌린지 등록 성공:", response.data);
-      router.push(`/challenges/${response.data.id}`);
+      queryClient.invalidateQueries({ queryKey: ["applications"] });
+      // router.push(`/challenges/${response.data.id}`);
+      router.push(`/users/me/challenges/applied`);
     } catch (error) {
       console.error("챌린지 등록 실패:", error.response?.data || error.message);
       alert("에러 발생: " + (error.response?.data?.message || error.message));

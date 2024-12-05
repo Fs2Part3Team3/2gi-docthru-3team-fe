@@ -105,7 +105,7 @@ const WorkDetail = () => {
         <div className={styles.head}>
           <h1 style={{ fontSize: "24px", padding: "1rem 0 1rem"}}>{data?.challenge?.title || "제목 없음"}</h1>
           <div ref={kebabRef} className={styles.kebab}>
-          {data?.user?.id === user?.id && (
+          {(data?.user?.id === user?.id || user?.role === "Admin") && (
                 <button className={styles.menuButton} onClick={handleMenuToggle}>
                   <Image
                     src={menu}
@@ -126,11 +126,12 @@ const WorkDetail = () => {
               </div>
         </div>
         <div className={styles.tag}>
-          <span className={styles.type}>{TYPE[data?.challenge?.docType] || "문서 타입 없음"}</span>
           <span className={styles.field}>{FIELD[data?.challenge?.field] || "카테고리 없음"}</span>
+          <span className={styles.type}>{TYPE[data?.challenge?.docType] || "문서 타입 없음"}</span>
         </div>
         <div className={styles.meta}>
           <div className={styles.information}>
+            <Image className={styles.profileImg} width={24} height={24} src="/images/ic_profile.png" alt="프로필" />
             <span className={styles.nickname}>{data?.user?.nickname || "작성자 없음"}</span>
             <button
               className={styles.likeButton}

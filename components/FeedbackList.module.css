@@ -1,4 +1,7 @@
 .feedbackItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 10px 0;
   position: relative;
   border-radius: 8px;
@@ -8,33 +11,85 @@
   background-color: #ffffff;
 }
 
-.feedbackItem small {
-  margin-bottom: 5px;
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--10px);
+  margin-bottom: 1rem;
+  
+  & p {
+    font-family: Pretendard;
+    font-size: var(--14px);
+    color: #262626;
+  }
+
+  & small {
+    margin-bottom: 0.5rem;
+    font-size: var(--12px);
+    color: #A3A3A3;
+  }
+}
+
+.editFeedback {
+  
+}
+
+.editBtn {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+
+  & button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: Pretendard;
+    font-size: var(--14px);
+    color: #737373;
+  }
+
+  & .edit {
+    margin-left: 1rem;
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 5rem;
+    height: 2rem;
+    border-radius: var(--10px);
+  }
 }
 
 .dropdownMenu {
-    position: absolute;
-    right: 0;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 1.5rem;
+  right: 0;
+  width: 8.75rem;
+  border: 1px solid #D4D4D4;
+  border-radius: var(--8px);
+  z-Index: 100;
 
-  .dropdownMenu button {
-    display: block;
+  & button {
     width: 100%;
-    padding: 8px;
+    height: 2.7rem;
     border: none;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-    white-space: nowrap;
+    font-family: Pretendard;
+    color: #737373;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D4D4D4;
   }
 
-  .dropdownMenu button:hover {
-    background-color: #f5f5f5;
+  & button:first-child {
+    border-top-left-radius: var(--8px);
+    border-top-right-radius: var(--8px);
   }
+
+  & button:last-child {
+    border-bottom-left-radius: var(--8px);
+    border-bottom-right-radius: var(--8px);
+    border-bottom: none;
+  }
+}
   
   .menuButton {
     background: none;

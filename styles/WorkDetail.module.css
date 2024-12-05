@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.profileImg {
+    margin-right: 0.5rem;
+}
+
 .workDetail {
     display: flex;
     flex-direction: column;
@@ -39,13 +43,13 @@
     gap: 0.75rem;
 }
 
-.type {
+.field {
     border-radius: 0.625rem;
     background-color: #72B2EE;
     padding: 0 0.75rem 0 0.75rem;
 }
 
-.field {
+.type {
     border: 1px solid #E5E5E5;
     border-radius: 0.625rem;
     padding: 0 0.75rem 0 0.75rem;
