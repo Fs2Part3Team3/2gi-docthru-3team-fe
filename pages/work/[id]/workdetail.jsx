@@ -77,6 +77,7 @@ const WorkDetail = () => {
     return <div>오류가 발생했습니다: {error.message}</div>;
   }
 
+
   const handleMenuToggle = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -89,21 +90,22 @@ const WorkDetail = () => {
     if (user?.role === "Admin") {
       setIsDelModalOpen(true);
       setErrorDel({
-        onClose: () => {
-
-          const latestReasonDel = reasonDelRef.current;
-          if (!latestReasonDel.trim()) {
-            alert("삭제 사유를 입력해주세요.");
-            return;
-          }
-          deleteWorkById(workId, latestReasonDel)
-            .then(() => {
-              queryClient.invalidateQueries(["workDetail"]);
-              router.push(`/challenges/${data.challenge.id}`);
-            })
-            .catch((error) => {
+        onClose: async () => {
+          try {
+            const latestReasonDel = reasonDelRef.current;
+            if (!latestReasonDel.trim()) {
+              alert("삭제 사유를 입력해주세요.");
+              return;
+            }
+            await deleteWorkById(workId, latestReasonDel)
+            await queryClient.invalidateQueries(["workDetail", workId])
+            queryClient.invalidateQueries(["challenges"]);
+            router.push(`/challenges/${data?.challenge?.id}`)
+          } catch (error) {
               console.error("삭제 중 오류:", error);
-            });
+              alert(error.response.data?.message);
+          };
+          console.log("data", data);
           setIsDelModalOpen(false);
         },
         onCancel: () => {
@@ -114,6 +116,7 @@ const WorkDetail = () => {
       deleteWorkById(workId)
         .then(() => {
           queryClient.invalidateQueries(["workDetail"]);
+          queryClient.invalidateQueries(["challenges"]);
           router.push(`/challenges/${data.challenge.id}`);
         })
         .catch((error) => {

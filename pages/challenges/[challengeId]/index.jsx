@@ -55,7 +55,7 @@ export function Work({ work, viewport }) {
 }
 
 export function WorkDetail({ work, viewport }) {
-  const { id, user: { nickname }, rank, content, lastModifiedAt } = work;
+  const { id, user, rank, content, lastModifiedAt } = work;
   const [likeCount, setLikeCount] = useState(work.likeCount);
   const [isLiked, setIsLiked] = useState(work.isLiked);
   const toggleLikeMutation = useMutation({
@@ -81,7 +81,7 @@ export function WorkDetail({ work, viewport }) {
             <div className={styles.user}>
               <Image width={1.5 * viewport.size} height={1.5 * viewport.size} src="/images/ic_profile.png" alt="Profile" />
               <div className={styles.nicknameAndGrade}>
-                <span className={styles.nickname}>{nickname}</span>
+                <span className={styles.nickname}>{user?.nickname}</span>
                 {/* <span className={styles.grade}>{GRADE[grade]}</span> */}
               </div>
             </div>
@@ -230,7 +230,7 @@ function ChallengeDetail() {
                   router.push(`/work/${workId}/edit`);
                 }
               } })
-            }} disabled={new Date(challenge?.deadLine).getTime() < Date.now()}>작업 도전하기</button>
+            }} disabled={new Date(challenge?.deadLine).getTime() < Date.now() || user?.role === "Admin"}>작업 도전하기</button>
             {/* {challenge.participants >= challenge.maxParticipants ||} */}
           </div>
         </div>
