@@ -13,7 +13,14 @@ function DelModal({ error, setError, reasonDel, setReasonDel }) {
 					}} />
 				</div>
 				<h4>내용</h4>
-				<textarea className={styles.popup_text} placeholder="삭제 사유를 입력해주세요." value={reasonDel} onChange={(e) => setReasonDel(e.target.value)}></textarea>
+				<textarea 
+					className={styles.popup_text} 
+					placeholder="삭제 사유를 입력해주세요." 
+					value={reasonDel} 
+					onChange={(e) => {
+						setReasonDel(e.target.value);
+					}}
+				/>
 				<button className={styles.popup_button_ok} onClick={() => {
 					error?.onClose?.();
 					setError(null);

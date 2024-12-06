@@ -45,7 +45,7 @@ export function Noti({ noti }) {
 			}}>
 				{noti.message}
 			</div>
-			<div className={styles.notiDate}>{moment(new Date(noti.createdAt)).format("YYYY-MM-DD")}</div>
+			<div className={styles.notiDate}>{moment(new Date(noti.createdAt)).format("YYYY-MM-DD hh:mm")}</div>
 		</div>
 	)
 }

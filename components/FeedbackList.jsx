@@ -97,7 +97,7 @@ const FeedbackItem = ({ feedback }) => {
         <>
           <p>{feedback.content}</p>
           <div className={styles.menuContainer}>
-            {feedback.userId === user?.id && (
+            {(feedback.userId === user?.id || user?.role === "Admin") && (
               <button className={styles.menuButton} onClick={handleMenuToggle}>
                 <Image
                   src={menu}

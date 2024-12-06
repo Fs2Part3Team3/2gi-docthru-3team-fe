@@ -10,8 +10,10 @@ import styles from "@/styles/editChallenge.module.css";
 import PopUp from "@/components/PopUp.jsx";
 import useAuth from "@/hooks/useAuth.jsx";
 import { useQueryClient } from "@tanstack/react-query";
+import { useUser } from "@/context/UserProvider.jsx";
 
 function editChallenge() {
+  const user = useUser();
   const [initialData, setInitialData] = useState(null);
   const fields = ["Next", "API", "Career", "Modern", "Web"];
   const docTypes = ["Blog", "Document"];
@@ -75,7 +77,13 @@ function editChallenge() {
 
       await updateChallenge(challengeId, updatedFields);
       queryClient.invalidateQueries({ queryKey: ["challenges"] });
-      router.push(`/challenges/${challengeId}`);
+      queryClient.invalidateQueries({ queryKey: ["applications"] });
+      if (user?.role === "Admin") {
+        router.push(`/admin/manage`);
+      } else {
+        router.push(`/users/me/challenges/applied`);
+      }
+      // router.push(`/challenges/${challengeId}`);
     } catch (error) {
       console.error("챌린지 수정 중 오류:", error);
     }

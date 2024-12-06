@@ -132,7 +132,7 @@ function TextEditor() {
           }}>임시저장</button>
           <button className={`${styles.button} ${styles.submit}`} type="button" onClick={() => {
             setError({
-              message: "작업을 제출하시겠습니까? 이전 작업은 덮어씌워집니다.", onClose: () => {
+              message: user?.role === "Admin" ? "작업물을 수정하시겠습니까? 이전 작업은 덮어씌워집니다." : "작업을 제출하시겠습니까? 이전 작업은 덮어씌워집니다.", onClose: () => {
                 patchWorkById(id, content);
                 queryClient.invalidateQueries({ queryKey: ["challenges"] });
                 queryClient.invalidateQueries({ queryKey: ["works", id] });

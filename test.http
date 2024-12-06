@@ -17,3 +17,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvb
 
 PATCH http://localhost:3100/api/challenges/15
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJVc2VyIiwiaWF0IjoxNzMzMTE2MTA1LCJleHAiOjE3MzMxMTk3MDV9.pbJuWtZHSlq74U9tc37bNY2VZCvCl4s2VfRXHgoaNfE
+
+
+
+###
+
+POST https://twogi-docthru-3team-be.onrender.com/api/works/40/feedbacks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMzM3Nzc4MiwiZXhwIjoxNzMzMzgxMzgyfQ.Jk1Tgnv0WKJ49kpw78sC9uBundy47mbsdXSPF5v5Y7Q
+Content-Type: application/json
+
+{"content": "피드백"}
+
+###
+
+DELETE https://twogi-docthru-3team-be.onrender.com/api/works/14
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMzQxNDkxOCwiZXhwIjoxNzMzNDE4NTE4fQ.wsmK_eaBWO1kXG3BcdhIrYfilvm92a8O60Ax91NpJAA
+Content-Type: application/json
+
+{ "message": "피드백" }
