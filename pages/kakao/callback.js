@@ -26,7 +26,6 @@ export default function KakaoCallback() {
           router.push('/'); 
         }
       } else {
-        console.error('카카오 로그인 실패: 데이터가 없습니다.');
         router.push('/login'); 
       }
     };

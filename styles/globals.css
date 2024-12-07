@@ -50,6 +50,7 @@
 
 html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   overflow-wrap: break-word;
@@ -72,14 +73,30 @@ body {
 }
 
 .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh; /* 화면 높이만큼 컨테이너 크기를 유지 */
   max-width: 1920px;
   margin: 0 auto;
   padding: 0;
 
   & .subContainer {
+    flex:1;
+    width: 100%;
     max-width: 1028px;
+    min-width: 996px;
     margin: 0 auto;
     padding: 1em;
+
+    @media (max-width: 1199px) and (min-width: 744px) {
+      min-width: 696px;
+    }
+
+    @media (max-width: 743px) {
+      min-width: 343px;
+    }
   }
 }
 
@@ -96,6 +113,10 @@ p {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  font-family: Pretendard;
 }
 
 img {

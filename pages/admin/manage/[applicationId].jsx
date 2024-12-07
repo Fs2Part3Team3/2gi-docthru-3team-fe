@@ -33,12 +33,10 @@ function ManageApp() {
     queryFn: () => getApplicationWithId(applicationId),
     staleTime: 5 * 60 * 1000,
   });
-  console.log('ManageApp applications', application);
 
   const mutation = useMutation({
     mutationFn: data => invalidateApplication(applicationId, data.status, data.invalidationComment),
     onSuccess: data => {
-      console.log('successfully updated: ', data);
       queryClient.invalidateQueries(['applications', applicationId]);
       if (data.message.includes('거절 사유가 필요합니다')) {
         setErrorMessage({ message: data.message });

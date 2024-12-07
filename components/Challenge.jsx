@@ -33,7 +33,6 @@ function Challenge({ challenge, status }) {
   const mutation = useMutation({
     mutationFn: data => deleteChallenge(data.id, data.invalidationComment),
     onSuccess: data => {
-      console.log('successfully updated: ', data);
       setIsModalOpen(false);
       queryClient.invalidateQueries(['challenges']);
     },

@@ -8,14 +8,13 @@ import { useViewport } from "@/context/ViewportProvider.jsx";
 import styles from "@/styles/Manage.module.css";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import PopUp from "@/components/PopUp.jsx";
 import useAuth from "@/hooks/useAuth.jsx";
 
 function Manage() {
   const viewport = useViewport();
   const sortRef = useRef();
-  // const [sort, setSort] = useState("");
   const [keyword, setKeyword] = useState("");
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
@@ -37,7 +36,6 @@ function Manage() {
     staleTime: 5 * 60 * 1000,
     retry: false,
   });
-  console.log("/admin/manage applications", applications);
 
   if (isPending) return <Loading />;
 
@@ -79,24 +77,11 @@ function Manage() {
         </div>
         <div className={styles.sort}>
           <Sort ref={sortRef} currentValue={currentSort} onChange={handleSortChange}/>
-          {/* <select value={sort} onChange={(e) => {
-            setSort(e.target.value);
-            setPage(1);
-            const [key, value] = e.target.value.split('=');
-            const [sort, order] = value.split(",");
-            setQuery(prev => ({ ...prev, status: undefined, sort: undefined, page, [key]: sort, order }));
-          }}>
-            <option value="status=Waiting">승인 대기</option>
-            <option value="status=Accepted">신청 승인</option>
-            <option value="status=Rejected">신청 거절</option>
-            <option value="sort=asc,appliedAt">신청 시간 빠른순</option>
-            <option value="sort=desc,appliedAt">신청 시간 느린순</option>
-            <option value="sort=asc,deadLine">마감 기한 빠른순</option>
-            <option value="sort=desc,deadLine">마감 기한 느린순</option>
-          </select> */}
         </div>
       </div>
-      <Table applications={applications?.list} />
+      <div className={styles.table}>
+        <Table applications={applications?.list} />
+      </div>
       {applications && applications.list.length !== 0 ? <Pagination page={page} setPage={setPage} pageMaxCandi={Math.ceil(applications.totalCount / 10)} /> : null}
     </main>
   )

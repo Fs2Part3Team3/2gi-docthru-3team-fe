@@ -16,7 +16,6 @@ export async function getChallengeWithId(id) {
 		return result?.data;
 	} catch (err) {
 		console.error(err);
-		// throw err;
 		return err?.response?.data || err;
 	}
 }

@@ -34,13 +34,10 @@ function SignupForm() {
   const onSubmit = async ({ email, nickname, password }) => {
     try {
       const userData = await postSignup({ email, nickname, password });
-      console.log('회원가입 성공', userData);
       const userDataSignup = await postLogin({ email, password });
-      console.log('로그인 성공', userDataSignup);
       setUser(userDataSignup.user);
       router.push('/');
     } catch (error) {
-      console.log('회원가입 실패', error);
       setSignupError({ message: `${error.response.data.message}`, onClose: () => setSignupError(null) });
     }
   };

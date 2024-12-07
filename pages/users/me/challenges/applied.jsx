@@ -30,11 +30,8 @@ function Applied() {
 		queryFn: () => getMyChallsApplied(query),
 		staleTime: 5 * 60 * 1000,
 	});
-	console.log("Applied applications", applications);
 
 	if (isPending) return <Loading />;
-
-	console.log(search);
 
 	const handleSortChange = (e) => {
 		setPage(1);
@@ -64,21 +61,6 @@ function Applied() {
 				</div>
 				<div className={styles.sort}>
 					<Sort ref={sortRef} currentValue={currentSort} onChange={handleSortChange}/>
-					{/* <select value={sort} onChange={(e) => {
-						setSort(e.target.value);
-						setPage(1);
-						const [key, value] = e.target.value.split('=');
-						const [sort, order] = value.split(",");
-						setQuery(prev => ({ ...prev, status: undefined, sort: undefined, page, [key]: sort, order }));
-					}}>
-						<option value="status=Waiting">승인 대기</option>
-						<option value="status=Accepted">신청 승인</option>
-						<option value="status=Rejected">신청 거절</option>
-						<option value="sort=asc,appliedAt">신청 시간 빠른순</option>
-						<option value="sort=desc,appliedAt">신청 시간 느린순</option>
-						<option value="sort=asc,deadLine">마감 기한 빠른순</option>
-						<option value="sort=desc,deadLine">마감 기한 느린순</option>
-					</select> */}
 				</div>
 			</div>
 			<Table applications={applications?.list} me={true} />

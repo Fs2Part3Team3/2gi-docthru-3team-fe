@@ -61,9 +61,7 @@ function TextEditor() {
     queryFn: () => getWorkById(id),
     enabled: !!id,
   });
-  console.log("WorkDetail edit work", work);
   const setSanitizedContent = (content) => {
-    console.log("content", content);
     const sanitizedContent = sanitizeHtml(content, SANITIZE_OPTIONS);
     setContent(sanitizedContent);
   };
@@ -71,7 +69,6 @@ function TextEditor() {
 
   useEffect(() => {
     setSavedContent(localStorage.getItem(STORAGE_KEY));
-    console.log("Saved content", savedContent);
     if (savedContent?.length) {
       setHasDraft(true);
     }
@@ -85,7 +82,6 @@ function TextEditor() {
 
   const handleBringBackDraft = () => {
     setSavedContent(localStorage.getItem(STORAGE_KEY));
-    console.log("savedContent", savedContent);
     setSanitizedContent(savedContent);
     setHasDraft(false);
   };

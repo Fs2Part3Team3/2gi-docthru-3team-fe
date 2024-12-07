@@ -124,8 +124,6 @@ function ChallengeDetail() {
     enabled: !!challengeId,
     retry: false,
   });
-  // console.log("ChallengeDetail challenge", challenge);
-  // console.log("ChallengeDetail user", user);
   const isAdmin = user?.role === "Admin";
 
   useEffect(() => {
@@ -151,7 +149,6 @@ function ChallengeDetail() {
         setWorks(rankedWorks);
         const filteredMaxLikeWorks = rankedWorks?.filter(work => work.rank === 1) ?? [];
         const detailedMaxLikeWorks = await Promise.all(filteredMaxLikeWorks?.map(async work => await getWorkById(work.id)));
-        // console.log(rankedWorks);
         setMaxLikeWorks(detailedMaxLikeWorks);
       }
     };
@@ -231,7 +228,6 @@ function ChallengeDetail() {
                 }
               } })
             }} disabled={new Date(challenge?.deadLine).getTime() < Date.now() || user?.role === "Admin"}>작업 도전하기</button>
-            {/* {challenge.participants >= challenge.maxParticipants ||} */}
           </div>
         </div>
       </main>
@@ -260,7 +256,6 @@ function ChallengeDetail() {
       </>
     ) : (
       <PopUp onlyCancel={true} error={errorMessage} setError={setErrorMessage} />
-      // <PopUp onlyCancel={true} error={{ message: "권한이 없습니다." , onCancel: () => router.push('/login')}} setError={setError} />
     )}
     </>
   );

@@ -4,6 +4,7 @@
   align-items: center;
   background-color: white;
   padding: var(--10px) 12.5rem;
+  width: 100%;
 
   @media (max-width: 1200px) {
     padding: var(--10px) var(--20px);
