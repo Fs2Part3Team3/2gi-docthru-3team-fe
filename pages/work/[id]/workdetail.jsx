@@ -105,7 +105,6 @@ const WorkDetail = () => {
               console.error("삭제 중 오류:", error);
               alert(error.response.data?.message);
           };
-          console.log("data", data);
           setIsDelModalOpen(false);
         },
         onCancel: () => {

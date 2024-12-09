@@ -50,7 +50,6 @@ function LoginForm() {
   const onSubmit = async ({ email, password }) => {
     try {
       const userData = await postLogin({ email, password });
-      console.log('로그인 성공', userData);
       setUser(userData.user);
       if (userData.user.role === 'Admin') {
         router.push('/admin/manage');
@@ -58,7 +57,6 @@ function LoginForm() {
         router.push('/');
       }
     } catch (error) {
-      console.log('로그인 실패', error);
       setLoginError({ message: '이메일 또는 비밀번호가 잘못되었습니다.', onClose: () => setLoginError(null) });
     }
   };

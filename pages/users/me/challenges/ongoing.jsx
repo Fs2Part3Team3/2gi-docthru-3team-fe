@@ -29,7 +29,6 @@ function Ongoing() {
 		queryFn: () => getMyChallsOngoing({ ...query, page }),
 		staleTime: 5 * 60 * 1000,
 	});
-	console.log("Ongoing challenges", challenges);
 
 	if (isPending) return <Loading />;
 

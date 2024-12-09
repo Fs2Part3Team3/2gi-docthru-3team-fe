@@ -38,7 +38,6 @@ function editChallenge() {
     if (challengeId) {
       getChallengeWithId(challengeId)
         .then((data) => {
-          console.log(data);
           setInitialData(data);
           reset(data);
 
@@ -73,7 +72,6 @@ function editChallenge() {
         alert("수정된 항목이 없습니다.");
         return;
       }
-      console.log("수정된 데이터:", updatedFields);
 
       await updateChallenge(challengeId, updatedFields);
       queryClient.invalidateQueries({ queryKey: ["challenges"] });
@@ -83,7 +81,6 @@ function editChallenge() {
       } else {
         router.push(`/users/me/challenges/applied`);
       }
-      // router.push(`/challenges/${challengeId}`);
     } catch (error) {
       console.error("챌린지 수정 중 오류:", error);
     }

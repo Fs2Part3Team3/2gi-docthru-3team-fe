@@ -28,7 +28,6 @@ function NotisRead() {
 		queryFn: ({ pageParam }) => getNotis({ page: pageParam, limit: PAGE_LIMIT, is_read: true }),
 		getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => lastPage?.notifications?.hasMore ? lastPageParam + 1 : undefined,
 	});
-	console.log("notisReadData", notisReadData);
 
 	return (
 		<div className={styles.notisRead}>

@@ -31,15 +31,11 @@ function NewChallenge() {
   });
 
   const onSubmit = async (data) => {
-    console.log("전송 데이터 확인:", data);
     try {
       const response = await instance.post("/challenges", data);
-      console.log("챌린지 등록 성공:", response.data);
       queryClient.invalidateQueries({ queryKey: ["applications"] });
-      // router.push(`/challenges/${response.data.id}`);
       router.push(`/users/me/challenges/applied`);
     } catch (error) {
-      console.error("챌린지 등록 실패:", error.response?.data || error.message);
       alert("에러 발생: " + (error.response?.data?.message || error.message));
     }
   };
