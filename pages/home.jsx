@@ -45,7 +45,6 @@ export default function Home() {
     staleTime: 5 * 60 * 1000,
   });
   const router = useRouter();
-  console.log("Home challenges", challenges);
 
   const handleFieldChange = (e) => {
     setField((prev) => ({

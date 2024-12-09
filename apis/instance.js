@@ -3,8 +3,6 @@ import { useRouter } from 'next/router';
 
 const instance = axios.create({
 	baseURL: `https://twogi-docthru-3team-be.onrender.com/api`,
-	// baseURL: `http://localhost:3100/api`,
-	// withCredentials: true,
 });
 
 instance.interceptors.request.use(function (config) {

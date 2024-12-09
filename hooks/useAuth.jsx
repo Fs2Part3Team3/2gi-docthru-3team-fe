@@ -10,12 +10,10 @@ export default function useAuth(required ) {
     useEffect(() => {
         if (!allowedUser) {
             setErrorMessage({ message: "로그인이 필요한 서비스입니다.", onCancel: () => router.push('/login')});
-            // router.push('/login');
         }
 
         else if (required && allowedUser.role !== required) {
             setErrorMessage({ message: "관리자만 접근할 수 있습니다.", onCancel: () => router.push('/')});
-            // router.push('/');
         }
 
         else setErrorMessage(null);

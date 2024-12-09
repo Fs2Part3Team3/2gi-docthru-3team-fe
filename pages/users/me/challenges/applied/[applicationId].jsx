@@ -34,12 +34,10 @@ function AppliedChallenge() {
     queryFn: () => getApplicationWithId(applicationId),
     staleTime: 5 * 60 * 1000,
   });
-  console.log("application", application);
 
   const mutation = useMutation({
     mutationFn: data => invalidateApplication(applicationId, data.status, data.invalidationComment),
     onSuccess: data => {
-      console.log('successfully updated: ', data);
       queryClient.invalidateQueries(['applications', applicationId]);
     },
     onError: error => {
@@ -54,7 +52,6 @@ function AppliedChallenge() {
   const onSubmit = async applicationId => {
     try {
       const applicationData = await deleteApplication(applicationId);
-      console.log('취소 성공', applicationData);
       queryClient.setQueryData(['applications', applicationId], null);
       queryClient.invalidateQueries({ queryKey: ['applications', '*'] });
       router.push('/users/me/challenges/applied');

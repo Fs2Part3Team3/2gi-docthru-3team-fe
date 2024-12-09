@@ -16,9 +16,6 @@ export default function GoogleCallback() {
       const user = query.get('user');
 
       if (accessToken && refreshToken && user) {
-        // 로컬 스토리지에 저장
-        // localStorage.setItem('accessToken', accessToken);
-        // localStorage.setItem('refreshToken', refreshToken);
         localStorage.setItem('user', JSON.stringify({ accessToken, refreshToken, user: JSON.parse(user) }));
 
         // 사용자 정보 업데이트
@@ -32,7 +29,6 @@ export default function GoogleCallback() {
           router.push('/');
         }
       } else {
-        console.error('구글 로그인 실패: 데이터가 없습니다.');
         router.push('/login'); 
       }
     };

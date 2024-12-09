@@ -30,7 +30,6 @@ function Completed() {
 		staleTime: 5 * 60 * 1000,
 		retry: false,
 	});
-	console.log("Completed challenges", challenges);
 
 	if (isPending) return <Loading />;
 
