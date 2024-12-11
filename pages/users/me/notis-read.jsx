@@ -3,6 +3,7 @@ import { getNotis } from "@/apis/notisService.js";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useUser } from "@/context/UserProvider.jsx";
 import moment from "moment";
+import { useViewport } from "@/context/ViewportProvider.jsx";
 
 const PAGE_LIMIT = 10;
 
@@ -16,6 +17,7 @@ export function NotiRead({ noti }) {
 }
 
 function NotisRead() {
+	const viewport = useViewport();
 	const user = useUser();
 	const {
 		data: notisReadData,
